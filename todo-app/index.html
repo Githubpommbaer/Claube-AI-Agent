@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareTodo - Teilbare Todo-Listen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>ShareTodo</h1>
+            <p class="subtitle">Erstelle und teile deine Todo-Listen</p>
+        </header>
+
+        <main>
+            <!-- Import Banner -->
+            <div id="import-banner" class="import-banner hidden">
+                <p>Du hast eine geteilte Liste erhalten!</p>
+                <div class="import-actions">
+                    <button id="btn-import" class="btn btn-primary">Liste importieren</button>
+                    <button id="btn-dismiss" class="btn btn-secondary">Abbrechen</button>
+                </div>
+            </div>
+
+            <!-- New List Creation -->
+            <section class="create-section">
+                <div class="input-group">
+                    <input type="text" id="new-list-name" placeholder="Neue Liste erstellen..." maxlength="50">
+                    <button id="btn-create-list" class="btn btn-primary">+ Erstellen</button>
+                </div>
+            </section>
+
+            <!-- Lists Overview -->
+            <section id="lists-overview" class="lists-overview">
+                <h2>Meine Listen</h2>
+                <div id="lists-container" class="lists-container"></div>
+                <p id="empty-state" class="empty-state">Noch keine Listen vorhanden. Erstelle deine erste!</p>
+            </section>
+
+            <!-- Single List View -->
+            <section id="list-detail" class="list-detail hidden">
+                <div class="list-header">
+                    <button id="btn-back" class="btn btn-icon" title="Zurück">&larr;</button>
+                    <h2 id="list-title"></h2>
+                    <div class="list-actions">
+                        <button id="btn-share" class="btn btn-share" title="Liste teilen">Teilen</button>
+                        <button id="btn-delete-list" class="btn btn-danger" title="Liste löschen">Löschen</button>
+                    </div>
+                </div>
+
+                <!-- Share Modal -->
+                <div id="share-modal" class="share-modal hidden">
+                    <div class="share-content">
+                        <p>Teile diese Liste mit dem folgenden Link:</p>
+                        <div class="share-link-group">
+                            <input type="text" id="share-link" readonly>
+                            <button id="btn-copy" class="btn btn-primary">Kopieren</button>
+                        </div>
+                        <p id="copy-feedback" class="copy-feedback hidden">Link kopiert!</p>
+                    </div>
+                </div>
+
+                <!-- Add Todo -->
+                <div class="input-group">
+                    <input type="text" id="new-todo-text" placeholder="Neues Todo hinzufügen..." maxlength="200">
+                    <button id="btn-add-todo" class="btn btn-primary">+ Hinzufügen</button>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text" class="progress-text">0/0 erledigt</span>
+                </div>
+
+                <!-- Todos -->
+                <ul id="todos-list" class="todos-list"></ul>
+                <p id="todos-empty" class="empty-state">Noch keine Todos. Füge das erste hinzu!</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>ShareTodo &mdash; Einfach. Teilbar. Erledigt.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
